@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>逢甲大學院系表</title>
+		
+		<script src="jquery-3.2.1.js"></script>
+		
+	</head>
+		
+<body>
+	<p style="font-size:20px">請選擇學院</p>
+	<select id="collage_list"></select>
+	<p style="font-size:20px">請選擇科系</p>
+	<select id="department_list"></select>
+	<script>
+		var collages = {
+            "商學院": [
+                "會計學系",
+                "國際經營與貿易學系",
+                "國際經營與貿易學系國際企業管理全英語學士班",
+                "財稅學系",
+                "合作經濟暨社會事業經營學系",
+                "統計學系",
+                "經濟學系",
+                "企業管理學系",
+                "行銷學系",
+                "國際企業管理學士學位學程(英語專班)",
+                "商學進修學士學位學程"
+            ],
+            "工學院": [
+                "機械與電腦輔助工程學系",
+                "纖維與複合材料學系",
+                "工業工程與系統管理學系",
+                "化學工程學系",
+                "航太與系統工程學系",
+                "精密系統設計學士學位學程"                
+            ],
+            "資電學院": [
+                "資訊工程學系",
+                "電機工程學系",
+                "電子工程學系",
+                "自動控制工程學系",
+                "通訊工程學系",
+                "資電不分系榮譽班"
+            ],
+            "人文社會學院": [
+                "中國文學系",
+                "外國語文學系"
+            ],
+            "建築專業學院": [
+                "建築專業學院學士班",
+				"建築學士學位學程",
+				"室內設計學士學位學程",
+				"室內設計進修學士班",
+				"創新設計學士學位學程"
+            ],
+            "理學院": [
+                "應用數學系",
+				"環境工程與科學學系",
+				"材料科學與工程學系",
+				"光電學系"
+            ],
+            "金融學院": [
+                "風險管理與保險學系",
+				"財務金融學系",
+				"財務工程與精算學士學位學程"
+            ],
+            "國際科技與管理學院": [
+                "澳洲墨爾本皇家理工大學商學與創新雙學士學位學程",
+                "美國聖荷西州立大學商學大數據分析雙學士學位學程 ",
+                "美國普渡大學電機資訊雙學士學位學程"				
+            ]
+        }
+        var collages_list = Object.keys(collages)
+        $('#collage_list').ready(() => {//讀到jquery時執行此段程式碼
+            $.each(collages_list, (index, value) => {
+                $('#collage_list').append(new Option(value))
+            })
+            $.each(collages[$('#collage_list').val()], (index, value) => {
+                $('#department_list').append(new Option(value))
+            })
+        })
+        $("#collage_list").change(() => {
+            $("#department_list").empty()
+            $.each(collages[$('#collage_list').val()], (index, value) => {
+                $('#department_list').append(new Option(value))
+            })
+        })
+    </script>
+</body>
+
+</html>
